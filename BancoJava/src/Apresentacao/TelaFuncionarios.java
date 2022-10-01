@@ -138,9 +138,9 @@ public class TelaFuncionarios extends javax.swing.JFrame {
             Connection con;
             Statement st;
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/colegio","root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/controle","root", "root");
             st = con.createStatement();
-            st.executeUpdate("insert into estudante values('tarciso','tata','tata@haha')");
+            st.executeUpdate("insert into funcionario values('"+txtMatricula.getText()+"','"+txtNome.getText()+"','"+txtCargo.getText()+"',"+Double.parseDouble(txtSalario.getText()+")");
             JOptionPane.showMessageDialog(null,"sucesso");  
         } catch (ClassNotFoundException ex) {
            JOptionPane.showMessageDialog(null,"erro nao esta na biblioteca");

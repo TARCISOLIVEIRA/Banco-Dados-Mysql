@@ -28,14 +28,16 @@ public class FuncionarioDao {
         } 
 }
     
-    public boolean salvar (Funcionario func){
+    public int salvar (Funcionario func){
+        int status;
         try {
             String inserir ;
             inserir = "INSERT INTO funcionario VALUES ('"+ func.getMatricula() + "','"+ func.getNome() + "','" + func.getCargo() + "', " + func.getSalario() + ")";
-            st.executeUpdate(inserir);
-            return true;
+            status = st.executeUpdate(inserir);
+            return status; // retorna 1
         } catch (SQLException ex) {
-            return false; 
+           // System.out.println(ex.getErrorCode()); 1062 tentativa de inserir já cadastrado
+            return ex.getErrorCode() ; 
         }
     }
     public void desconectar (){

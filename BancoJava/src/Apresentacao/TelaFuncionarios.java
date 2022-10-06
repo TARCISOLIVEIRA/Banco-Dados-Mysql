@@ -126,8 +126,9 @@ public class TelaFuncionarios extends javax.swing.JFrame {
      Funcionario fun;
      FuncionarioDao dao;
      boolean status;
+     int resp;
      
-     
+      
         
      Funcionario funcionario = new Funcionario();
      funcionario.setMatricula(txtMatricula.getText());
@@ -141,44 +142,31 @@ public class TelaFuncionarios extends javax.swing.JFrame {
      if (status == false) {
          JOptionPane.showMessageDialog(null,"Erro da conexão");
      } else {
-         status = dao.salvar(funcionario);
-         if (status == false){
-             JOptionPane.showMessageDialog(null,"Erro ao incluir os dados");
-             
-         } else {
-             JOptionPane.showMessageDialog(null,"Dados incluidos com sucesso");
+         resp = dao.salvar(funcionario);
+         if (resp == 1){
+             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
+       
          txtMatricula.setText("");
          txtNome.setText("");
          txtCargo.setText("");
          txtSalario.setText("");
          txtMatricula.requestFocus();
+     
          
+         } else if (resp==1062){
+             
+             JOptionPane.showMessageDialog(null,"Já cadastrada");
+        
+         } else {
+             JOptionPane.showMessageDialog(null,"Erro ao tenta funcionario");
          }
          
          
          dao.desconectar();
      }
      
-         
-//  try {
-          //  Connection con;
-         //   Statement st;
-         //   Class.forName("com.mysql.jdbc.Driver");
-          //  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/controle","root", "root");
-         //   st = con.createStatement();
-          //  st.executeUpdate("insert into funcionario values('" + txtMatricula.getText() + "','" + txtNome.getText() + "','" + txtCargo.getText() + "'," + Double.parseDouble(txtSalario.getText()) + ")");
-            
-          //  JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso"); 
-          //  txtMatricula.setText("");
-          //  txtNome.setText("");
-         //   txtCargo.setText("");
-         //   txtSalario.setText("");
-         //   txtMatricula.requestFocus();
-     //   } catch (ClassNotFoundException ex) {
-     //      JOptionPane.showMessageDialog(null,"erro nao esta na biblioteca");
-    //    } catch (SQLException ex) {
-    //      JOptionPane.showMessageDialog(null,"erro na comunicação");  
-      //  }
+    
+      
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     

@@ -166,10 +166,17 @@ public class TelaFuncionarios extends javax.swing.JFrame {
      }
      
     
+     
       
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    
+   public void limpaCampos(){
+         txtMatricula.setText("");
+         txtNome.setText("");
+         txtCargo.setText("");
+         txtSalario.setText("");
+         txtMatricula.requestFocus();
+     } 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
